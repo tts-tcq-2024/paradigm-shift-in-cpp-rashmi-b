@@ -16,7 +16,7 @@ bool BatteryManagementSystem::checkSocOk(float state_of_charge)
 {
   float minSoc = 20;
   float maxSoc = 80;
-  float currentSoc = soc;
+  float currentSoc = state_of_charge;
   return inputInRange(minSoc, maxSoc, currentSoc);
 }
 
@@ -51,6 +51,6 @@ bool BatteryManagementSystem::batteryIsOk(float temperature, float state_of_char
 }
 
 int main() {
-  assert(batteryIsOk(25, 70, 0.7) == true);
-  assert(batteryIsOk(50, 85, 0) == false);
+  assert(BatteryManagementSystem::batteryIsOk(25, 70, 0.7) == true);
+  assert(BatteryManagementSystem::batteryIsOk(50, 85, 0) == false);
 }
