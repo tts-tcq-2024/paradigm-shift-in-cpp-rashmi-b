@@ -12,7 +12,7 @@ bool BatteryManagementSystem::checkTemperatureOk(float temperature)
   return inputInRange(minTemperature, maxTemperature, currentTemperature);
 }
 
-bool BatteryManagementSystem::checkSocOk(float soc)
+bool BatteryManagementSystem::checkSocOk(float state_of_charge)
 {
   float minSoc = 20;
   float maxSoc = 80;
@@ -20,11 +20,11 @@ bool BatteryManagementSystem::checkSocOk(float soc)
   return inputInRange(minSoc, maxSoc, currentSoc);
 }
 
-bool BatteryManagementSystem::checkChargeRateOk(float chargeRate)
+bool BatteryManagementSystem::checkChargeRateOk(float charge_rate)
 {
   float minCharge = 0.1;
   float MaxCharge = 0.8;
-  float currentCharge = chargeRate;
+  float currentCharge = charge_rate;
   return inputInRange(minCharge, MaxCharge, currentCharge);
 }
 
@@ -36,18 +36,18 @@ bool BatteryManagementSystem::inputInRange(float minValue, float maxValue, float
   }
   else
   {
-    print("%f Value out of range!", inputValue);
+    printf("%f Value out of range!", inputValue);
     return false;
   }
 }
 
-bool BatteryManagementSystem::batteryIsOk(float temperature, float soc, float chargeRate) {
+bool BatteryManagementSystem::batteryIsOk(float temperature, float state_of_charge, float charge_rate) {
 
   temperatureOk = BatteryManagementSystem::checkTemperatureOk(temperature);
   stateOfChargeOk = BatteryManagementSystem::checkSocOk(state_of_charge);
-  chargeInRange = BatteryManagementSystem::checkChargeRateOk(charge_rate);
+  chargeRateOk = BatteryManagementSystem::checkChargeRateOk(charge_rate);
 
-  return temperatureOk && stateOfChargeOk && chargeInRange;
+  return temperatureOk && stateOfChargeOk && chargeRateOk;
 }
 
 int main() {

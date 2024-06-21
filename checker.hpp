@@ -13,7 +13,7 @@ class BatteryManagementSystem
     private:
         bool temperatureOk;
         bool stateOfChargeOk;
-        bool chargeInRange;
+        bool chargeRateOk;
 
         bool checkTemperatureOk(float temperature);
         bool checkSocOk(float state_of_charge);
