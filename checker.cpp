@@ -29,22 +29,23 @@ bool BatteryManagementSystem::checkChargeRateOk(float charge_rate)
   return inputInRange(minCharge, MaxCharge, currentCharge, "charge_rate");
 }
 
-bool BatteryManagementSystem::printOutput(bool result, string valueType)
+bool BatteryManagementSystem::printOutput(bool result, const std::string& valueType)
 {
   bool inRange = result;
   string valueType = valueType;
   if (inRange)
   {
-    printf("%f Value of %s is in range", inputValue, valueType);
+    printf("%f Value of %s is in range", inputValue, valueType.c_str());
   }
   else
   {
-    printf("%f Value of %s is not in range! Please check", inputValue, valueType);
+    printf("%f Value of %s is not in range! Please check", inputValue, valueType.c_str());
   }
 }
 
-bool BatteryManagementSystem::inputInRange(float minValue, float maxValue, float inputValue, string valueType)
+bool BatteryManagementSystem::inputInRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
 {
+  string valueType = valuetype;
   if (inputValue > minValue && inputValue < maxValue)
   {
     printOutput(true, valueType);
@@ -57,8 +58,9 @@ bool BatteryManagementSystem::inputInRange(float minValue, float maxValue, float
   }
 }
 
-/* Is battery OK Takes temprature, state of charge and charge rate as inputs */ 
-bool BatteryManagementSystem::batteryIsOk(float temperature, float state_of_charge, float charge_rate) {
+/* Is battery OK Takes temperature, state of charge and charge rate as inputs */ 
+bool BatteryManagementSystem::batteryIsOk(float temperature, float state_of_charge, float charge_rate)
+{
 
   temperatureOk = BatteryManagementSystem::checkTemperatureOk(temperature);
   stateOfChargeOk = BatteryManagementSystem::checkSocOk(state_of_charge);

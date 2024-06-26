@@ -18,7 +18,7 @@ class BatteryManagementSystem
         bool checkTemperatureOk(float temperature);
         bool checkSocOk(float state_of_charge);
         bool checkChargeRateOk(float charge_rate);
-        bool printOutput(bool result, string valueType)
+        bool printOutput(bool result, string valueType);
         bool inputInRange(float minValue, float maxValue, float inputValue, string valueType);
     };
 
