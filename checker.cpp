@@ -32,20 +32,19 @@ bool BatteryManagementSystem::checkChargeRateOk(float charge_rate)
 bool BatteryManagementSystem::printOutput(bool result, const std::string& valueType)
 {
   bool inRange = result;
-  string valueType = valueType;
+  std::string valueType = valueType;
   if (inRange)
   {
-    printf("%f Value of %s is in range", inputValue, valueType.c_str());
+    printf("Value %s is in range", valueType.c_str());
   }
   else
   {
-    printf("%f Value of %s is not in range! Please check", inputValue, valueType.c_str());
+    printf("Value %s is not in range! Please check", valueType.c_str());
   }
 }
 
 bool BatteryManagementSystem::inputInRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
 {
-  string valueType = valuetype;
   if (inputValue > minValue && inputValue < maxValue)
   {
     printOutput(true, valueType);
