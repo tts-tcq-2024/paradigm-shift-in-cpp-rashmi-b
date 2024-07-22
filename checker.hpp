@@ -19,8 +19,9 @@ class BatteryManagementSystem
         bool checkSocOk(float state_of_charge);
         bool checkChargeRateOk(float charge_rate);
         void printErrorMessage(const std::string& valueType);
-        void printOkMessage(const std::string& valueType);
-        bool inputInRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
+        void printWarnMessage(const std::string& valueType);
+        bool inputInLowRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
+        bool inputInRangeWithTolerance(float minValue, float maxValue, float inputValue, const std::string& valueType);
     };
 
 #endif //CHECKER_HPP
