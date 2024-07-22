@@ -1,14 +1,12 @@
 #include <assert.h>
 #include <iostream>
 #include "checker.hpp"
+#include "checker_params.hpp"
 using namespace std;
 
 /* Check each Parameter Individually */
-/* Check temperature is within range */
-bool BatteryManagementSystem::checkTemperatureOk(float temperature)
+bool BMS::BatteryManagementSystem::checkTemperatureOk(float temperature)
 {
-  float minTemperature = 0;
-  float maxTemperature = 45;
   float currentTemperature = temperature;
   
   inputInLowToleranceRange(minTemperature, maxTemperature, currentTemperature, "temperature");
@@ -17,10 +15,8 @@ bool BatteryManagementSystem::checkTemperatureOk(float temperature)
   return inputInRange(minTemperature, maxTemperature, currentTemperature, "temperature");
 }
 
-bool BatteryManagementSystem::checkSocOk(float state_of_charge)
+bool BMS::BatteryManagementSystem::checkSocOk(float state_of_charge)
 {
-  float minSoc = 20;
-  float maxSoc = 80;
   float currentSoc = state_of_charge;
 
   inputInLowToleranceRange(minSoc, maxSoc, currentSoc, "state_of_charge");
@@ -30,10 +26,8 @@ bool BatteryManagementSystem::checkSocOk(float state_of_charge)
 
 }
 
-bool BatteryManagementSystem::checkChargeRateOk(float charge_rate)
+bool BMS::BatteryManagementSystem::checkChargeRateOk(float charge_rate)
 {
-  float minCharge = 0.1;
-  float MaxCharge = 0.8;
   float currentCharge = charge_rate;
 
   inputInLowToleranceRange(minCharge, MaxCharge, currentCharge, "charge_rate");
@@ -42,25 +36,25 @@ bool BatteryManagementSystem::checkChargeRateOk(float charge_rate)
   return inputInRange(minCharge, MaxCharge, currentCharge, "charge_rate");
 }
 
-void BatteryManagementSystem::printOkMessage(const std::string& valueType)
+void BMS::BatteryManagementSystem::printOkMessage(const std::string& valueType)
 {
   std::string valueTypename = valueType;
   std::cout << "OK: Parameter" << valueType << "in Range.";
 }
 
-void BatteryManagementSystem::printErrorMessage(const std::string& valueType)
+void BMS::BatteryManagementSystem::printErrorMessage(const std::string& valueType)
 {
   std::string valueTypename = valueType;
   std::cout << "Error: Parameter" << valueType << "Not in Range! Please check.";
 }
 
-void BatteryManagementSystem::printWarnMessage(const std::string& valueType)
+void BMS::BatteryManagementSystem::printWarnMessage(const std::string& valueType)
 {
   std::string valueTypename = valueType;
   std::cout << "WARNING: Parameter" << valueType << "is in border range.";
 }
 
-bool BatteryManagementSystem::inputInRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
+bool BMS::BatteryManagementSystem::inputInRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
 {
   if (inputValue > minValue && inputValue < maxValue)
   {
@@ -74,7 +68,7 @@ bool BatteryManagementSystem::inputInRange(float minValue, float maxValue, float
   }
 }
 
-bool BatteryManagementSystem::inputInLowToleranceRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
+bool BMS::BatteryManagementSystem::inputInLowToleranceRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
 {
   float minTolerance = (minValue * 5) / 100;
   if (inputValue > minValue && inputValue < (minValue + minTolerance))
@@ -89,7 +83,7 @@ bool BatteryManagementSystem::inputInLowToleranceRange(float minValue, float max
     }
 }
 
-bool BatteryManagementSystem::inputInHighToleranceRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
+bool BMS::BatteryManagementSystem::inputInHighToleranceRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
 {
   float maxTolerance = (maxValue * 5) / 100;
   if (inputValue >= (maxValue - maxTolerance) && inputValue <= maxValue)
@@ -105,12 +99,12 @@ bool BatteryManagementSystem::inputInHighToleranceRange(float minValue, float ma
 }
 
 /* Is battery OK Takes temperature, state of charge and charge rate as inputs */ 
-bool BatteryManagementSystem::batteryIsOk(float temperature, float state_of_charge, float charge_rate)
+bool BMS::BatteryManagementSystem::batteryIsOk(float temperature, float state_of_charge, float charge_rate)
 {
 
-  temperatureOk = BatteryManagementSystem::checkTemperatureOk(temperature);
-  stateOfChargeOk = BatteryManagementSystem::checkSocOk(state_of_charge);
-  chargeRateOk = BatteryManagementSystem::checkChargeRateOk(charge_rate);
+  temperatureOk = BMS::BatteryManagementSystem::checkTemperatureOk(temperature);
+  stateOfChargeOk = BMS::BatteryManagementSystem::checkSocOk(state_of_charge);
+  chargeRateOk = BMS::BatteryManagementSystem::checkChargeRateOk(charge_rate);
 
   return temperatureOk && stateOfChargeOk && chargeRateOk;
 }

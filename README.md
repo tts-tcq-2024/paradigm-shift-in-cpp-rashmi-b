@@ -58,3 +58,7 @@ Shorten the Semantic distance
 - Functional to express relation between input and output
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
+
+## Enchancement added
+
+Each parameter will have a tolerance to it. Added features to check if the paramter is within the range of the updated value with tolerance.
