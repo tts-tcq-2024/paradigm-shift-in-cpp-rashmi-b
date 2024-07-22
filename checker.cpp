@@ -43,11 +43,12 @@ void BatteryManagementSystem::printWarnMessage(const std::string& valueType)
 
 bool BatteryManagementSystem::inputInRangeWithTolerance(float minValue, float maxValue, float inputValue, const std::string&  valueType)
 {
-  float tolerance = (maxValue * 5) / 100;
+  float minTolerance = (minValue * 5) / 100;
+  float maxTolerance = (maxValue * 5) / 100;
   if (inputValue > minValue && inputValue < maxValue)
   {
     // Now check with tolerance
-    if ((inputValue > minValue && inputValue < (minValue + tolerance)) || (inputValue >= (maxValue - tolerance) && inputValue <= maxValue))
+    if ((inputValue > minValue && inputValue < (minValue + minTolerance)) || (inputValue >= (maxValue - maxTolerance) && inputValue <= maxValue))
     {
       printWarnMessage(valueType);
       return true;
