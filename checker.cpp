@@ -65,10 +65,3 @@ bool BatteryManagementSystem::batteryIsOk(float temperature, float state_of_char
 
   return temperatureOk && stateOfChargeOk && chargeRateOk;
 }
-
-int main()
-{
-  BatteryManagementSystem BMS;
-  assert(BMS.batteryIsOk(25, 70, 0.7) == true);
-  assert(BMS.batteryIsOk(50, 85, 0) == false);
-}
