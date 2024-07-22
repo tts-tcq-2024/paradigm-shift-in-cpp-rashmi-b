@@ -18,10 +18,12 @@ class BatteryManagementSystem
         bool checkTemperatureOk(float temperature);
         bool checkSocOk(float state_of_charge);
         bool checkChargeRateOk(float charge_rate);
+        void printOkMessage(const std::string& valueType);
         void printErrorMessage(const std::string& valueType);
         void printWarnMessage(const std::string& valueType);
-        bool inputInLowRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
-        bool inputInRangeWithTolerance(float minValue, float maxValue, float inputValue, const std::string& valueType);
+        bool inputInRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
+        bool inputInLowToleranceRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
+        bool inputInHighToleranceRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
     };
 
 #endif //CHECKER_HPP
