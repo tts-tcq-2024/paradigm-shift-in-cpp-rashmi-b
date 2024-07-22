@@ -51,7 +51,7 @@ bool BatteryManagementSystem::inputInRangeWithTolerance(float minValue, float ma
     {
       printWarnMessage(valueType);
       return true;
-    } 
+    }
     else 
     {
       printErrorMessage(valueType);
