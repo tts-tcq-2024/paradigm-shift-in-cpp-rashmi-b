@@ -1,7 +1,6 @@
 #include <assert.h>
 #include <iostream>
 #include "checker.hpp"
-#include "checker_params.hpp"
 
 using namespace std;
 
