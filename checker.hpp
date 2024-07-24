@@ -5,8 +5,6 @@
 #include <iostream>
 #include <string>
 
-#include "checker_params.hpp"
-
 namespace BMS
 {
     class BatteryManagementSystem
