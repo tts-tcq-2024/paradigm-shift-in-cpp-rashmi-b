@@ -1,11 +1,11 @@
-#ifndef CHECKER_HPP
-#define CHECKER_HPP
+#ifndef BATTERY_CHECKER_HPP
+#define BATTERY_CHECKER_HPP
 
 #include <assert.h>
 #include <iostream>
 #include <string>
 
-#include "checker_params.hpp"
+#include "batteryCheckerParams.hpp"
 
 namespace BMS
 {
@@ -30,4 +30,4 @@ namespace BMS
             bool inputInHighToleranceRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
     };
 }
-#endif //CHECKER_HPP
+#endif //BATTERY_CHECKER_HPP

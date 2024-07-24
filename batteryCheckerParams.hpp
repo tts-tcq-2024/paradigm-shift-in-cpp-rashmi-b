@@ -1,5 +1,5 @@
-#ifndef CHECKER_PARAMS_HPP
-#define CHECKER_PARAMS_HPP
+#ifndef BATTERY_CHECKER_PARAMS_HPP
+#define BATTERY_CHECKER_PARAMS_HPP
 
 #include <vector>
 #include <string>
@@ -26,4 +26,4 @@ namespace BMS
 														{ "ERROR: Not in Range! Please check.", "FEHLER: Nicht in Reichweite! Überprüfen Sie bitte."}
 													  };
 }
-#endif // CHECKER_PARAMS_HPP
+#endif // #define BATTERY_CHECKER_PARAMS_HPP

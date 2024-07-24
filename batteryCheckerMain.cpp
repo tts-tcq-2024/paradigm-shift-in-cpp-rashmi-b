@@ -1,4 +1,4 @@
-#include "checker.hpp"
+#include "batteryChecker.hpp"
 
 int main()
 {
