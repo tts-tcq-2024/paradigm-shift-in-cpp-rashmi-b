@@ -22,9 +22,6 @@ namespace BMS
             bool checkTemperatureOk(float temperature);
             bool checkSocOk(float state_of_charge);
             bool checkChargeRateOk(float charge_rate);
-            void printOkMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
-            void printErrorMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
-            void printWarnMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
             bool inputInRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
             bool inputInLowToleranceRange(float minValue, float maxValue, float inputValue, const std::string& valueType);
             bool inputInHighToleranceRange(float minValue, float maxValue, float inputValue, const std::string& valueType);

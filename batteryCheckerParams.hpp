@@ -1,10 +1,8 @@
 #ifndef BATTERY_CHECKER_PARAMS_HPP
 #define BATTERY_CHECKER_PARAMS_HPP
 
-#include <vector>
 #include <string>
 #include <iostream>
-#include <map>
 
 namespace BMS 
 {
@@ -15,15 +13,6 @@ namespace BMS
 	static float minCharge = 0.1;
 	static float MaxCharge = 0.8;
 
-	enum LANGUAGE_OPTION : int 
-    {
-        ENGLISH = 0,
-        GERMAN = 1
-    };
-
-	static std::vector<std::vector<std::string>> message = { { "OK.", "OK."},
-														{ "WARNING: Parameter is in border range.", "WARNUNG: Parameter liegt im Grenzbereich."},
-														{ "ERROR: Not in Range! Please check.", "FEHLER: Nicht in Reichweite! Überprüfen Sie bitte."}
-													  };
+	bool checkTolerance = false;
 }
 #endif // #define BATTERY_CHECKER_PARAMS_HPP

@@ -36,34 +36,18 @@ bool BMS::BatteryManagementSystem::checkChargeRateOk(float charge_rate)
   return inputInRange(minCharge, MaxCharge, currentCharge, "charge_rate");
 }
 
-void BMS::BatteryManagementSystem::printOkMessage(const std::string& valueType, LANGUAGE_OPTION language_option)
-{
-  std::string valueTypename = valueType;
-  std::cout << valueType << BMS::message[0][language_option];
-}
 
-void BMS::BatteryManagementSystem::printWarnMessage(const std::string& valueType, LANGUAGE_OPTION language_option)
-{
-  std::string valueTypename = valueType;
-  std::cout << valueType << BMS::message[1][language_option];
-}
-
-void BMS::BatteryManagementSystem::printErrorMessage(const std::string& valueType, LANGUAGE_OPTION language_option)
-{
-  std::string valueTypename = valueType;
-  std::cout << valueType << BMS::message[2][language_option];
-}
 
 bool BMS::BatteryManagementSystem::inputInRange(float minValue, float maxValue, float inputValue, const std::string&  valueType)
 {
   if (inputValue > minValue && inputValue < maxValue)
   {
-    printOkMessage(valueType, BMS::ENGLISH);
+    // printOkMessage(valueType, BMS::ENGLISH);
     return true;
   }
   else
   {
-    printErrorMessage(valueType, BMS::ENGLISH);
+    // printErrorMessage(valueType, BMS::ENGLISH);
     return false;
   }
 }
@@ -73,12 +57,12 @@ bool BMS::BatteryManagementSystem::inputInLowToleranceRange(float minValue, floa
   float minTolerance = (minValue * 5) / 100;
   if (inputValue > minValue && inputValue < (minValue + minTolerance))
     {
-      printWarnMessage(valueType, BMS::ENGLISH);
+      // printWarnMessage(valueType, BMS::ENGLISH);
       return true;
     }
     else 
     {
-      printErrorMessage(valueType, BMS::ENGLISH);
+      // printErrorMessage(valueType, BMS::ENGLISH);
       return false;
     }
 }
@@ -88,12 +72,12 @@ bool BMS::BatteryManagementSystem::inputInHighToleranceRange(float minValue, flo
   float maxTolerance = (maxValue * 5) / 100;
   if (inputValue >= (maxValue - maxTolerance) && inputValue <= maxValue)
     {
-      printWarnMessage(valueType, BMS::ENGLISH);
+      // printWarnMessage(valueType, BMS::ENGLISH);
       return true;
     }
     else 
     {
-      printErrorMessage(valueType, BMS::ENGLISH);
+      // printErrorMessage(valueType, BMS::ENGLISH);
       return false;
     }
 }
