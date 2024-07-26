@@ -42,11 +42,32 @@ bool BMS::BatteryManagementSystem::checkTemperatureOk(float temperature, bool ch
 bool BMS::BatteryManagementSystem::checkSocOk(float state_of_charge, bool checkTolerance)
 {
   float currentSoc = state_of_charge;
+  
+  if (checkTolerance)
+  {
+    if(inputInLowToleranceRange(minSoc, maxSoc, currentSoc) ||
+    inputInHighToleranceRange(minSoc, maxSoc, currentSoc))
+    {
+      consoleMessage.printWarnMessage("state_of_charge", BMS::ENGLISH);
+      return true;
+    }
+    else
+    {
+      consoleMessage.printErrorMessage("state_of_charge", BMS::ENGLISH);
+      return false;
+    }
+  }
 
-  inputInLowToleranceRange(minSoc, maxSoc, currentSoc);
-  inputInHighToleranceRange(minSoc, maxSoc, currentSoc);
-
-  return inputInRange(minSoc, maxSoc, currentSoc);
+  if(inputInRange(minSoc, maxSoc, currentSoc))
+  {
+    consoleMessage.printOkMessage("state_of_charge", BMS::ENGLISH);
+    return true;
+  }
+  else
+  {
+    consoleMessage.printErrorMessage("state_of_charge", BMS::ENGLISH);
+    return false;
+  }
 
 }
 
@@ -54,13 +75,32 @@ bool BMS::BatteryManagementSystem::checkChargeRateOk(float charge_rate, bool che
 {
   float currentCharge = charge_rate;
 
-  inputInLowToleranceRange(minCharge, MaxCharge, currentCharge);
-  inputInHighToleranceRange(minCharge, MaxCharge, currentCharge);
+  if (checkTolerance)
+  {
+    if(inputInLowToleranceRange(minCharge, MaxCharge, currentCharge) ||
+    inputInHighToleranceRange(minCharge, MaxCharge, currentCharge))
+    {
+      consoleMessage.printWarnMessage("charge_rate", BMS::ENGLISH);
+      return true;
+    }
+    else
+    {
+      consoleMessage.printErrorMessage("charge_rate", BMS::ENGLISH);
+      return false;
+    }
+  }
 
-  return inputInRange(minCharge, MaxCharge, currentCharge);
+  if(inputInRange(minCharge, MaxCharge, currentCharge))
+  {
+    consoleMessage.printOkMessage("charge_rate", BMS::ENGLISH);
+    return true;
+  }
+  else
+  {
+    consoleMessage.printErrorMessage("charge_rate", BMS::ENGLISH);
+    return false;
+  }
 }
-
-
 
 bool BMS::BatteryManagementSystem::inputInRange(float minValue, float maxValue, float inputValue)
 {

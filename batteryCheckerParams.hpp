@@ -12,7 +12,5 @@ namespace BMS
 	static float maxSoc = 80;
 	static float minCharge = 0.1;
 	static float MaxCharge = 0.8;
-
-	bool checkTolerance = false;
 }
 #endif // #define BATTERY_CHECKER_PARAMS_HPP
