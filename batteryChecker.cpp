@@ -19,7 +19,12 @@ bool BMS::BatteryManagementSystem::checkTemperatureOk(float temperature, bool ch
       consoleMessage.printWarnMessage("temperature", BMS::ENGLISH);
       return true;
     }
-    else if(inputInHighToleranceRange(minTemperature, maxTemperature, currentTemperature))
+    else
+    {
+      consoleMessage.printErrorMessage("temperature", BMS::ENGLISH);
+      return false;
+    }
+    if(inputInHighToleranceRange(minTemperature, maxTemperature, currentTemperature))
     {
       consoleMessage.printWarnMessage("temperature", BMS::ENGLISH);
       return true;
@@ -54,7 +59,12 @@ bool BMS::BatteryManagementSystem::checkSocOk(float state_of_charge, bool checkT
       consoleMessage.printWarnMessage("state_of_charge", BMS::ENGLISH);
       return true;
     }
-    else if(inputInHighToleranceRange(minSoc, maxSoc, currentSoc))
+    else
+    {
+      consoleMessage.printErrorMessage("state_of_charge", BMS::ENGLISH);
+      return false;
+    }
+    if(inputInHighToleranceRange(minSoc, maxSoc, currentSoc))
     {
       consoleMessage.printWarnMessage("state_of_charge", BMS::ENGLISH);
       return true;
