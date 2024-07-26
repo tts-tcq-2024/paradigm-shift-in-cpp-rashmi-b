@@ -24,7 +24,7 @@ namespace BMS
             bool checkChargeRateOk(float charge_rate, bool checkTolerance);
             bool inputInRange(float minValue, float maxValue, float inputValue);
             bool inputInLowToleranceRange(float minValue, float maxValue, float inputValue);
-            bool inputInHighToleranceRange(float minValue, float maxValue, float inputValue;
+            bool inputInHighToleranceRange(float minValue, float maxValue, float inputValue);
     };
 }
 #endif //BATTERY_CHECKER_HPP

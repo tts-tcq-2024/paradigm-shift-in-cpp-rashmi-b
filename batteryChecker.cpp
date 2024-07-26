@@ -4,7 +4,8 @@
 #include "printBatteryMessage.hpp"
 
 using namespace std;
-using namespace BMS;
+
+BMS::PrintConsoleMessage consoleMessage;
 
 /* Check each Parameter Individually */
 bool BMS::BatteryManagementSystem::checkTemperatureOk(float temperature, bool checkTolerance)
@@ -16,17 +17,26 @@ bool BMS::BatteryManagementSystem::checkTemperatureOk(float temperature, bool ch
     if(inputInLowToleranceRange(minTemperature, maxTemperature, currentTemperature) ||
     inputInHighToleranceRange(minTemperature, maxTemperature, currentTemperature))
     {
-      BMS::PrintConsoleMessage::printWarnMessage("temperature", BMS::ENGLISH);
+      consoleMessage.printWarnMessage("temperature", BMS::ENGLISH);
       return true;
     }
     else
     {
-      BMS::PrintConsoleMessage::printErrorMessage("temperature", BMS::ENGLISH);
+      consoleMessage.printErrorMessage("temperature", BMS::ENGLISH);
       return false;
     }
   }
-
-  return inputInRange(minTemperature, maxTemperature, currentTemperature);
+  
+  if(inputInRange(minTemperature, maxTemperature, currentTemperature))
+  {
+    consoleMessage.printOkMessage("temperature", BMS::ENGLISH);
+    return true;
+  }
+  else
+  {
+    consoleMessage.printErrorMessage("temperature", BMS::ENGLISH);
+    return false;
+  }
 }
 
 bool BMS::BatteryManagementSystem::checkSocOk(float state_of_charge, bool checkTolerance)
@@ -45,7 +55,7 @@ bool BMS::BatteryManagementSystem::checkChargeRateOk(float charge_rate, bool che
   float currentCharge = charge_rate;
 
   inputInLowToleranceRange(minCharge, MaxCharge, currentCharge);
-  inputInHighToleranceRange(minCharge, MaxCharge, currentCharge, "charge_rate");
+  inputInHighToleranceRange(minCharge, MaxCharge, currentCharge);
 
   return inputInRange(minCharge, MaxCharge, currentCharge);
 }
@@ -56,12 +66,10 @@ bool BMS::BatteryManagementSystem::inputInRange(float minValue, float maxValue, 
 {
   if (inputValue > minValue && inputValue < maxValue)
   {
-    // printOkMessage(valueType, BMS::ENGLISH);
     return true;
   }
   else
   {
-    // printErrorMessage(valueType, BMS::ENGLISH);
     return false;
   }
 }
@@ -71,12 +79,10 @@ bool BMS::BatteryManagementSystem::inputInLowToleranceRange(float minValue, floa
   float minTolerance = (minValue * 5) / 100;
   if (inputValue > minValue && inputValue < (minValue + minTolerance))
     {
-      // printWarnMessage(valueType, BMS::ENGLISH);
       return true;
     }
     else 
     {
-      // printErrorMessage(valueType, BMS::ENGLISH);
       return false;
     }
 }
@@ -86,12 +92,10 @@ bool BMS::BatteryManagementSystem::inputInHighToleranceRange(float minValue, flo
   float maxTolerance = (maxValue * 5) / 100;
   if (inputValue >= (maxValue - maxTolerance) && inputValue <= maxValue)
     {
-      // printWarnMessage(valueType, BMS::ENGLISH);
       return true;
     }
     else 
     {
-      // printErrorMessage(valueType, BMS::ENGLISH);
       return false;
     }
 }
