@@ -14,7 +14,8 @@ namespace BMS
     {
         private IBatteryStatusLogger *logger;
         public:
-            bool batteryIsOk(float temperature, float state_of_charge, float charge_rate,IBatteryStatusLogger* loggerArg);
+          BatteryManagementSystem(IBatteryStatusLogger *loggerArg): logger{loggerArg};
+            bool batteryIsOk(float temperature, float state_of_charge, float charge_rate);
 
         private:
             bool temperatureOk;
