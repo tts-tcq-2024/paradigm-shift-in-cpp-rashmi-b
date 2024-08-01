@@ -6,10 +6,11 @@
 #include <string>
 
 #include "printBatteryMessageParams.hpp"
+#include "IBatteryStatusLogger.hpp"
 
 namespace BMS
 {
-    class BatteryStatusConsoleLogger
+    class BatteryStatusConsoleLogger:public IBatteryStatusLogger
     {
         public:
             void printOkMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
