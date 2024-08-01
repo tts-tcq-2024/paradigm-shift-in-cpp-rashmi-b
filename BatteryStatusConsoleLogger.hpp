@@ -9,7 +9,7 @@
 
 namespace BMS
 {
-    class PrintConsoleMessage
+    class BatteryStatusConsoleLogger
     {
         public:
             void printOkMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
