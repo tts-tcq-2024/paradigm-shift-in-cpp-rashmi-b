@@ -5,7 +5,7 @@
 
 using namespace std;
 
-BMS::PrintConsoleMessage consoleMessage;
+
 
 /* Check each Parameter Individually */
 bool BMS::BatteryManagementSystem::checkTemperatureOk(float temperature, bool checkTolerance)
@@ -51,12 +51,12 @@ bool BMS::BatteryManagementSystem::inputInRange(float minValue, float maxValue, 
 {
   if (inputValue > minValue && inputValue < maxValue)
   {
-    consoleMessage.printOkMessage(valueType, BMS::ENGLISH);
+    logger->printOkMessage(valueType, BMS::ENGLISH);
     return true;
   }
   else
   {
-    consoleMessage.printErrorMessage(valueType, BMS::ENGLISH);
+ logger->printErrorMessage(valueType, BMS::ENGLISH);
     return false;
   }
 }
@@ -66,12 +66,12 @@ bool BMS::BatteryManagementSystem::inputInLowToleranceRange(float minValue, floa
   float minTolerance = (minValue * 5) / 100;
   if (inputValue > minValue && inputValue < (minValue + minTolerance))
     {
-      consoleMessage.printWarnMessage(valueType, BMS::ENGLISH);
+    logger->printWarnMessage(valueType, BMS::ENGLISH);
       return true;
     }
     else 
     {
-      consoleMessage.printErrorMessage(valueType, BMS::ENGLISH);
+      logger->printErrorMessage(valueType, BMS::ENGLISH);
       return false;
     }
 }
@@ -81,12 +81,12 @@ bool BMS::BatteryManagementSystem::inputInHighToleranceRange(float minValue, flo
   float maxTolerance = (maxValue * 5) / 100;
   if (inputValue >= (maxValue - maxTolerance) && inputValue <= maxValue)
     {
-      consoleMessage.printWarnMessage(valueType, BMS::ENGLISH);
+    logger->printWarnMessage(valueType, BMS::ENGLISH);
       return true;
     }
     else 
     {
-      consoleMessage.printErrorMessage(valueType, BMS::ENGLISH);
+  logger->printErrorMessage(valueType, BMS::ENGLISH);
       return false;
     }
 }
