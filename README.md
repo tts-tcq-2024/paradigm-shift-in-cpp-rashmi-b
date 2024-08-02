@@ -58,3 +58,8 @@ Shorten the Semantic distance
 - Functional to express relation between input and output
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
+
+## Enchancement added
+
+1. Each parameter will have a tolerance to it. Added features to check if the paramter is within the range of the updated value with tolerance.
+2. Language option added to choose between English or German. The appropriate ok, warning or error message will be printed on the console.
