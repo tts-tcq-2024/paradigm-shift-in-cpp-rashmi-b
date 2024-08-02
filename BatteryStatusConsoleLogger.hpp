@@ -1,5 +1,5 @@
-#ifndef PRINT_BATTERY_MESSAGE_HPP
-#define PRINT_BATTERY_MESSAGE_HPP
+#ifndef BATTERY_STATUS_CONSOLE_LOGGER
+#define BATTERY_STATUS_CONSOLE_LOGGER
 
 #include <assert.h>
 #include <iostream>
@@ -13,9 +13,9 @@ namespace BMS
     class BatteryStatusConsoleLogger:public IBatteryStatusLogger
     {
         public:
-            void printOkMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
-            void printErrorMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
-            void printWarnMessage(const std::string& valueType, LANGUAGE_OPTION language_option);
+            void printOkMessage(const std::string& valueType, LANGUAGE_OPTION language_option) override;
+            void printErrorMessage(const std::string& valueType, LANGUAGE_OPTION language_option) override;
+            void printWarnMessage(const std::string& valueType, LANGUAGE_OPTION language_option) override;
     };
 }
-#endif //PRINT_BATTERY_MESSAGE_HPP
+#endif //BATTERY_STATUS_CONSOLE_LOGGER

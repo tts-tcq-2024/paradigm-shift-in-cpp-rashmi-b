@@ -1,7 +1,7 @@
 #include "batteryCheckerParams.hpp"
 #include "IBatteryStatusLogger.hpp"
 
-class BatteryStatusLoggerMock:public IBatteryStatusLogger{
+class BatteryStatusLoggerMock:public BMS::IBatteryStatusLogger{
 
   public:
       //void printOkMe....
@@ -9,8 +9,8 @@ class BatteryStatusLoggerMock:public IBatteryStatusLogger{
 };
 
 void test_cases(){
-BatteryStatusLoggerMock fakeLogger;
-  BMS::BatteryManagementSystem codeUnderTest { &fakeLogger};
+BatteryStatusLoggerMock *fakeLogger = nullptr;
+  BMS::BatteryManagementSystem(fakeLogger);
   assert(codeUnderTest.batteryIsOk(25, 70, 0.7) == true);
   assert(codeUnderTest.batteryIsOk(50, 85, 0) == false);
   assert(codeUnderTest.batteryIsOk(30, 70, 0.1) == false);
@@ -22,8 +22,6 @@ BatteryStatusLoggerMock fakeLogger;
 
 int main()
 {
-  BatteryStatusConsoleLogger consoleLogger;
-  BMS::BatteryManagementSystem BMS { &consoleLogger};
-  
+  test_cases();
   return 0;
 }
