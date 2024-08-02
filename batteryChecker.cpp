@@ -1,11 +1,8 @@
 #include <assert.h>
 #include <iostream>
 #include "batteryChecker.hpp"
-#include "printBatteryMessage.hpp"
 
 using namespace std;
-
-
 
 /* Check each Parameter Individually */
 bool BMS::BatteryManagementSystem::checkTemperatureOk(float temperature, bool checkTolerance)

@@ -1,6 +1,6 @@
 #include <assert.h>
 #include <iostream>
-#include "printBatteryMessage.hpp"
+#include "BatteryStatusConsoleLogger.hpp"
 
 using namespace std;
 

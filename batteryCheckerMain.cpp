@@ -1,4 +1,6 @@
-#include "batteryChecker.hpp"
+#include "batteryCheckerParams.hpp"
+#include "IBatteryStatusLogger.hpp"
+
 class BatteryStatusLoggerMock:public IBatteryStatusLogger{
 
   public:

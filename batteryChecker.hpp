@@ -6,13 +6,13 @@
 #include <string>
 
 #include "batteryCheckerParams.hpp"
-#include "IBatteryStatusLogger"
+#include "IBatteryStatusLogger.hpp"
 
 namespace BMS
 {
     class BatteryManagementSystem
     {
-        private IBatteryStatusLogger *logger;
+        private: IBatteryStatusLogger *logger;
         public:
           BatteryManagementSystem(IBatteryStatusLogger *loggerArg): logger{loggerArg};
             bool batteryIsOk(float temperature, float state_of_charge, float charge_rate);
